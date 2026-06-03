@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> zaad services</title>
+
+    <link rel="icon" type="image/x-icon" href="images/zaad.png">
+</head>
+
+
+<style>
+    body {
+        margin: 0;
+
+        background-image: url("images/bg-zaad.png");
+        background-size: cover; 
+        opacity: 0.7;
+        font-family: Arial, sans-serif;
+      
+    }
+
+    /* Error message */
+#aut{
+    position: absolute;
+    top: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Main Box */
+#main{
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: white;
+    width: 60%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Header */
+#header{
+    color: #00b894;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+/* Services List */
+#services{
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+#services li{
+    background: #f1f2f6;
+    margin: 5px 0;
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#services li:hover{
+    background: #00cec9;
+    color: white;
+    transform: scale(1.03);
+}
+
+/* Input and Button Container */
+.form-group{
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+/* Input */
+#input-btn{
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #00b894;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+}
+
+/* Button */
+#send-btn{
+    padding: 12px 20px;
+    background: #00b894;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#send-btn:hover{
+    background: #019875;
+}
+/* Result Section */
+#result{
+    /* margin-top: 10px; */
+    width: 60%;          /* 👈 30% screen */
+    max-width: 300px;    
+    background: linear-gradient(to right, #00b894, #00cec9);
+    color: white;
+    border-radius: 20px;
+    text-align: left;
+    justify-content: left;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+#send-money-form{
+    margin-top: 20px;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+#send-money-form{
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: white;
+
+    width: 90%;
+    max-width: 400px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    z-index: 1000;
+
+    animation: popup 0.5s ease;
+
+}
+
+/* Inputs */
+#send-money-form input{
+
+    width: 90%;
+
+    padding: 12px;
+
+    margin-top: 10px;
+
+    border: 2px solid #00b894;
+
+    border-radius: 8px;
+
+    outline: none;
+}
+
+/* Button */
+#confirm-btn{
+
+    width: 95%;
+
+    padding: 12px;
+
+    margin-top: 15px;
+
+    background: #00b894;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+/* Animation */
+@keyframes popup{
+
+    from{
+        opacity: 0;
+
+        transform: translate(-50%, -40%);
+    }
+
+    to{
+        opacity: 1;
+
+        transform: translate(-50%, -50%);
+    }
+
+}
+
+/* Withdraw Popup */
+#withdraw-form{
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: white;
+
+    width: 90%;
+    max-width: 400px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    z-index: 1000;
+
+    animation: popup 0.5s ease;
+}
+
+/* Inputs */
+#withdraw-form input{
+
+    width: 90%;
+
+    padding: 12px;
+
+    border: 2px solid #00b894;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    margin-top: 10px;
+}
+
+/* Button */
+#withdraw-btn{
+
+    width: 95%;
+
+    padding: 12px;
+
+    background: #00b894;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.close-btn{
+
+    float: right;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    color: #00b894;
+
+    font-weight: bold;
+}
+
+.close-btn:hover{
+
+    color: black;
+}
+#theme-btn{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #00b894;
+    color: white;
+}
+
+.dark-mode{
+    background-image: none;
+    background-color: #121212;
+    color: white;
+}
+
+.dark-mode #main,
+.dark-mode #send-money-form,
+.dark-mode #withdraw-form{
+    background: #1e1e1e;
+    color: white;
+}
+
+.dark-mode #services li{
+    background: #333;
+    color: white;
+}
+
+.dark-mode input{
+    background: #2a2a2a;
+    color: white;
+    border: 2px solid #00b894;
+}
+#login-form{
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 350px;
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.3);
+
+}
+
+#login-form input{
+
+    width: 90%;
+
+    padding: 12px;
+
+    margin-top: 10px;
+
+    border: 2px solid #00b894;
+
+    border-radius: 8px;
+
+}
+
+#login-form button{
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background: #00b894;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+</style>
+<body>
+
+<div id="login-form">
+
+    <h2>ZAAD Login</h2>
+
+    <input
+        type="password"
+        id="pin"
+        placeholder="Geli PIN-kaaga"
+        maxlength="4"
+    >
+
+    <button onclick="login()">
+        Login
+    </button>
+
+</div>
+
+    
+<h2 id="aut"></h2>
+
+<div id="main" style="display:none;">
+
+    <h1 id="header">
+        Kusoo dhawaada ZAAD Services
+    </h1>
+
+    <ol id="services">
+        <li> 1. itus hadhaaga</li>
+        <li> 2.lacag dirid</li>
+        <li> 3.lacag labixin</li>
+        <li> 4.ku iibso</li>
+        <li> 5.itus dhaqdhaqaaqa</li>
+        <li> 6.E-vocher</li>
+        <li> 7.Maarayn</li>
+        <li> 8.Daarasalaam bank</li>
+        <li> 9.Taaj</li>
+        <li> 11.kabax</li>
+    </ol>
+<div class="form-group">
+
+    <input type="number" id="input-btn" placeholder="Enter service number">
+
+    <button id="send-btn" onclick="showResult()">
+        Send
+    </button>
+
+</div>
+
+</div>
+
+<div id="result">
+
+    <h1></h1>
+</div>
+
+<div id="send-money-form" style="display:none;">
+
+
+    <span class="close-btn" onclick="closeSendForm()">❌</span>
+
+   
+
+    <h2>Dir Lacag</h2>
+
+   
+
+    <!-- Receiver Number -->
+    <input 
+        type="number"
+        id="receiver-number"
+        placeholder="Numberka loo dirayo"
+    >
+
+    <!-- Confirm Number -->
+    <input 
+        type="number"
+        id="confirm-number"
+        placeholder="Ku celi numberka"
+    >
+
+    <!-- Amount -->
+    <input 
+        type="number"
+        id="amount"
+        placeholder="Lacagta"
+    >
+     <!-- Receiver Name -->
+   
+     <input 
+        type="text"
+        id="receiver-name"
+        placeholder="Magaca qofka"
+    >
+
+    <button id="confirm-btn" onclick="sendMoney()">
+        lacad diris
+
+        
+    </button>
+
+</div>
+
+<!-- lacag qaadasho form -->
+<div id="withdraw-form" style="display:none;">
+
+    <span class="close-btn" onclick="closeWithdrawForm()">❌</span>
+
+    <h2>Lacag Qaadasho</h2>
+
+    <!-- Account -->
+    <input 
+        type="number"
+        id="withdraw-account"
+        placeholder="Account-ka lacagta laga qaadayo"
+    >
+
+    <br><br>
+
+    <!-- Amount -->
+    <input 
+        type="number"
+        id="withdraw-amount"
+        placeholder="Geli lacagta"
+    >
+
+    <br><br>
+
+    <!-- Button -->
+    <button id="withdraw-btn" onclick="withdrawMoney()">
+        Qaado Lacag
+    </button>
+
+</div>
+
+
+<button id="theme-btn" onclick="toggleTheme()">
+    🌙 Dark Mode
+</button>
+
+<script>
+
+let correctPassword = "1234";
+let attempts = 0;
+
+function login() {
+
+    let pin = document.getElementById("pin").value;
+
+    if(pin === correctPassword){
+
+        document.getElementById("login-form").style.display = "none";
+
+        document.getElementById("main").style.display = "block";
+
+    }
+
+    else{
+
+        attempts++;
+
+        if(attempts >= 3){
+
+            document.getElementById("aut").innerHTML =
+            "Dibada ayaad ka joogta system";
+
+            document.getElementById("login-form").style.display = "none";
+
+        }else{
+
+            alert(
+                "PIN khaldan. Fursado hadhay: "
+                + (3 - attempts)
+            );
+
+        }
+
+    }
+
+}
+
+let service = document.getElementById("input-btn");
+
+let balance = 1000;
+let NUmber = 252633370206;
+
+function showResult() {
+
+    if (service.value == 1) {
+
+        let date = new Date();
+
+        document.getElementById("result").innerHTML =
+            "Hadhaagaagu waa " + balance + " shilin <br>" +
+            "Account: " + NUmber + "<br>" +
+            "Taariikh: " + date.toLocaleString();
+    }
+
+    else if (service.value == 2) {
+
+        document.getElementById("send-money-form").style.display = "block";
+
+        document.getElementById("result").innerHTML =
+            "Fadlan buuxi form-ka lacag dirista";
+    }
+
+    else if (service.value == 3) {
+
+        document.getElementById("withdraw-form").style.display = "block";
+
+        document.getElementById("result").innerHTML =
+            "Fadlan buuxi form-ka lacag qaadashada";
+    }
+
+    else if(service.value == 11){
+
+    alert("Waad ka baxday system-ka");
+
+    location.reload();
+    }
+
+    else {
+
+        document.getElementById("result").innerHTML =
+            "adeegani diyaar ma ah : adeegso 1 ilaa 3<br> mahadsanid macmiil ";
+    }
+    
+    
+}
+
+function sendMoney() {
+
+    let name = document.getElementById("receiver-name").value.trim();
+    let receiver = document.getElementById("receiver-number").value.trim();
+    let confirmNumber = document.getElementById("confirm-number").value.trim();
+    let amount = Number(document.getElementById("amount").value);
+
+    // 1. Empty check
+    if (name === "" || receiver === "" || confirmNumber === "" || amount <= 0) {
+        alert("Fadlan buuxi dhammaan xogta");
+        return;
+    }
+
+    // 10 digits ONLY (not less, not more)
+    if (!/^\d{10}$/.test(receiver) || !/^\d{10}$/.test(confirmNumber)) {
+        alert("Number-ku waa inuu noqdaa 10 lambar kaliya");
+        return;
+    }
+
+    // 3. Match check
+    if (receiver !== confirmNumber) {
+        alert("Number-ku isma waafaqsana!");
+        return;
+    }
+
+    // 4. Balance check
+    if (amount > balance) {
+        alert("Hadhaagu kuguma filna!");
+        return;
+    }
+
+    // 5. Confirm popup
+    let confirmSend = confirm(
+        "Ma hubtaa inaad lacag u dirto?\n\n" +
+        "Magaca: " + name + "\n" +
+        "Number: " + receiver + "\n" +
+        "Lacag: $" + amount
+    );
+
+    if (!confirmSend) {
+        return;
+    }
+
+    // 6. Deduct balance
+    balance -= amount;
+
+    // 7. Show result
+    document.getElementById("send-money-form").style.display = "none";
+
+    document.getElementById("result").innerHTML =
+        "Waxaad u dirtay <b>" + name + "</b><br><br>" +
+        "Account: " + receiver + "<br><br>" +
+        "Lacag: $" + amount + "<br><br>" +
+        "Hadhaagaaga cusub waa: $" + balance;
+
+    // 8. Clear inputs
+    document.getElementById("receiver-name").value = "";
+    document.getElementById("receiver-number").value = "";
+    document.getElementById("confirm-number").value = "";
+    document.getElementById("amount").value = "";
+}
+
+
+function withdrawMoney(){
+
+    let account = document.getElementById("withdraw-account").value;
+    let amount = document.getElementById("withdraw-amount").value;
+
+    amount = Number(amount);
+
+    if(account === "" || amount === ""){
+        alert("Fadlan buuxi xogta");
+        return;
+    }
+
+    if(amount > balance){
+        alert("Hadhaaga kuguma filna");
+        return;
+    }
+
+    // CONFIRM (OK / CANCEL)
+    let confirmWithdraw = confirm(
+        "Ma hubtaa inaad lacag qaadato?\n\n" +
+        "Account: " + account + "\n" +
+        "Lacagta: $" + amount
+    );
+
+    if (!confirmWithdraw) {
+        alert("Withdraw waa la kansalay <br> mahadsanid macmiil");
+        return;
+    }
+
+    balance = balance - amount;
+
+    document.getElementById("withdraw-form").style.display = "none";
+
+    document.getElementById("result").innerHTML =
+        " Waxaad kala baxday $" + amount +
+        "<br><br>Hadhaagaagu waa: $" + balance;
+
+        document.getElementById("withdraw-account").value = "";
+        document.getElementById("withdraw-amount").value = "";
+}
+
+function closeSendForm(){
+
+    document.getElementById("send-money-form").style.display = "none";
+}
+
+function closeWithdrawForm(){
+
+    document.getElementById("withdraw-form").style.display = "none";
+}
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark-mode");
+
+    let btn = document.getElementById("theme-btn");
+
+    if(document.body.classList.contains("dark-mode")){
+
+        btn.innerHTML = "☀️ Light Mode";
+
+    }else{
+
+        btn.innerHTML = "🌙 Dark Mode";
+    }
+}
+</script>
+
+    
+</body>
+</html>
